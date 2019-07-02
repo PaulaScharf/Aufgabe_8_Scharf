@@ -191,3 +191,7 @@ app.use(logger(loggerFormat, {
   stream: process.stdout
 }));
 */
+
+
+app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist'));
+app.use('/qunit', express.static(__dirname + '/node_modules/qunit/qunit'));
