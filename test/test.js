@@ -23,13 +23,13 @@ describe( "HTTP-CRUD Test" , function() {
 
 				let createBody = "";
 
-			  createResponse.on("data", (chunk) => {
-			    createBody += chunk;
-			  });
+			  	createResponse.on("data", (chunk) => {
+			    	createBody += chunk;
+			  	});
 
-		  	createResponse.on("end", () => {
-		      let data = JSON.parse(createBody);
-					//console.dir(data);
+		  		createResponse.on("end", () => {
+		      		let data = JSON.parse(createBody);
+					console.log(data);
 					assert.ok(undefined!==data._id);
 					done();
 				});
