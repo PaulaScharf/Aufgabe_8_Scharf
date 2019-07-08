@@ -13,6 +13,7 @@ router.post("/",  (req, res, next) => {
   console.dir(req.body);
   req.db.collection('item').insertOne(req.body, (error, result) => {
     let responseBody = {};
+
     if(error){
       console.dir(error);
       responseBody.error = "error";
