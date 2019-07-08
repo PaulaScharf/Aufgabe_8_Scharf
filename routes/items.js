@@ -57,7 +57,7 @@ router.put("/",  (req, res, next) => {
     } else {
       responseBody._id = id;
     }
-    //console.dir(result);
+    console.dir(responseBody);
     res.json(responseBody);
   });
 });

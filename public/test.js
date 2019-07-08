@@ -56,8 +56,25 @@ QUnit.test( "AJAX get", function( assert ) {
 });
 QUnit.test( "AJAX put", function( assert ) {
 
-  assert.ok(false, "test not implemented...");
-  done();
+  // note the function call done(); below after all async work completed
+  var done = assert.async();
+  var createDone = false;
+  $.ajax({
+    url: "/item?_id=" +itemId, // URL der Abfrage,
+    data: {foo: "barista"},
+    type: "PUT"
+  })
+      .done (function( response) {
+        createDone = true;
+        assert.ok( undefined !== response._id, "update id: " + itemId);
+      })
+      .fail (function( xhr, status, errorThrown ) {
+        assert.ok(false, "update route failed, error: " + errorThrown);
+      })
+      .always (function( xhr, status ) {
+        assert.ok(createDone, "ajax done with response...");
+        done();
+      });
 
 });
 
